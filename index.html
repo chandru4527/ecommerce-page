@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            height: 100px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: blue;
+            color: white;
+            padding: 0 40px;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            width: 200px;
+        }
+
+        .icon-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            height: 60px;
+            width: 60px;
+            margin-bottom: 8px;
+        }
+
+        #cart {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-evenly;
+            padding: 10px;
+        }
+
+        .card {
+            width: 240px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            margin: 10px;
+
+            &:hover {
+                transform: scale(1.05);
+                box-shadow: 0 0 20px black;
+            }
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+        }
+
+        .card h2 {
+            font-size: 18px;
+            margin-top: 5px;
+        }
+
+        .card small {
+            margin-top: 5px;
+        }
+
+        .card p {
+            font-weight: bold;
+            color: blue;
+            margin-top: 5px;
+        }
+
+        .card button {
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+            margin-top: 5px;
+
+            &:hover {
+                background-color: #1e1eff;
+            }
+        }
+
+        .cart-box {
+            width: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .cart-box input {
+            width: auto;
+            height: 25px;
+            border-radius: 5px;
+            padding: 2px;
+            border: 2px solid white;
+        }
+
+        input:focus {
+            border-color: navy;
+        }
+
+        .cart-box .fa-magnifying-glass {
+            display: none;
+        }
+
+        .ri-shopping-cart-2-fill {
+            font-size: 23px;
+        }
+
+
+        @media(max-width:600px) {
+            nav {
+                padding: 0px 10px;
+            }
+
+            .logo {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100px;
+                width: 100px;
+            }
+
+            .logo h1 {
+                font-size: 20px;
+            }
+
+            .icon-box {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 20px;
+                height: 40px;
+                width: 40px;
+                margin-bottom: 8px;
+            }
+
+            .card {
+                width: 220px;
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                padding: 10px;
+                text-align: center;
+                transition: all 0.3s ease;
+                margin: 10px;
+
+                &:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0 0 20px black;
+                }
+            }
+
+            .cart-box {
+                width: 70px;
+            }
+
+            .cart-box input {
+                display: none;
+            }
+
+            .cart-box .fa-magnifying-glass {
+                display: block;
+            }
+        }
+
+         @media(max-width:500px){
+            .card {
+                width: 280px;
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                padding: 10px;
+                text-align: center;
+                transition: all 0.3s ease;
+                margin: 10px;
+
+                &:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0 0 20px black;
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="cart"></div>
+
+    <script>
+        let nav = document.createElement("nav");
+
+        let logo = document.createElement("div")
+        logo.className = "logo";
+
+        let box = document.createElement("div")
+        box.className = "icon-box";
+
+        let icon = document.createElement("i");
+        icon.className = "fa-brands fa-apple fa-xl";
+
+        let text = document.createElement("h1")
+        text.innerText = "ISTORE"
+
+        let input = document.createElement("input")
+        input.innerText = "search"
+        input.placeholder = "Search"
+
+        let search = document.createElement("div")
+        search.className = "cart-box";
+
+        let icon1 = document.createElement("i");
+        icon1.className = "ri-shopping-cart-2-fill"
+
+        let icon2 = document.createElement("i");
+        icon2.className = "fa-solid fa-magnifying-glass fa-xl"
+
+        box.append(icon)
+        logo.append(box, text);
+        nav.append(logo, search);
+        search.append(input, icon2, icon1)
+        document.body.prepend(nav);
+
+
+        let iphones = [
+            { name: "Iphone 15 Pro", img: "https://static1.pocketnowimages.com/wordpress/wp-content/uploads/2023/09/pbi-iphone-15-pro-max.png", price: "$4000", review: "4.6" },
+            { name: "Iphone 16 Pro", img: "https://static.iphoned.nl/orca/products/23029/apple-iphone-16-pro.png", price: "$6500", review: "4.5" },
+            { name: "Iphone 14 Pro Max", img: "https://media.extra.com/s/aurora/100322230_800/Apple-iPhone-14-Pro-Max%2C-5G%2C-128GB%2C-Space-Black?locale=en-GB,en-*,*", price: "$5000", review: "4.9" },
+            { name: "Iphone 17 Pro Max", img: "https://www.mobiledokan.com/media/apple-iphone-17-pro-max-white-official-image_1.webp", price: "$4500", review: "4.9" },
+            { name: "Iphone 15 pro", img: "https://static1.pocketnowimages.com/wordpress/wp-content/uploads/2023/09/pbi-iphone-15-pro-max.png", price: "$4000", review: "4.6" },
+            { name: "Iphone 15 pro", img: "https://static1.pocketnowimages.com/wordpress/wp-content/uploads/2023/09/pbi-iphone-15-pro.png", price: "$4500", review: "4.2" },
+            { name: "Iphone 16 pro", img: "https://i5.walmartimages.com/seo/AT-T-iPhone-16-Pro-Max-512GB-Black-Titanium-Apple-Intelligence_dd05474c-fe54-4971-85f6-2713af29243a.d49c65d29ad3ae94fd4bfa4051055e62.jpeg", price: "$6000", review: "4.3" },
+            { name: "Iphone 14 pro max", img: "https://media.extra.com/s/aurora/100322230_800/Apple-iPhone-14-Pro-Max%2C-5G%2C-128GB%2C-Space-Black?locale=en-GB,en-*,*", price: "$5000", review: "4.9" },
+            { name: "Iphone 17 pro max", img: "https://iphone-mania.jp/wp-content/uploads/2025/02/10/iPhone17-Pro-PT.jpeg", price: "$4300", review: "4.8" },
+            { name: "Iphone 17", img: "https://tse1.mm.bing.net/th/id/OIP.4BTtJpez3AvsIouvVXtSuwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3", price: "$4800", review: "4.3" },
+            { name: "Iphone 17 pro max", img: "https://www.mobiledokan.com/media/apple-iphone-17-pro-max-white-official-image_1.webp", price: "$4500", review: "4.9" },
+            { name: "Iphone 17", img: "https://cdn.mwave.com.au/images/400/apple_iphone_17_pro_max_256gb_cosmic_orange_ac89347_41674.jpg", price: "$4200", review: "4.8" }, { name: "Iphone 15 pro", img: "https://static1.pocketnowimages.com/wordpress/wp-content/uploads/2023/09/pbi-iphone-15-pro-max.png", price: "$4000", review: "4.6" },
+            { name: "Iphone 15 pro", img: "https://static1.pocketnowimages.com/wordpress/wp-content/uploads/2023/09/pbi-iphone-15-pro.png", price: "$4500", review: "4.2" },
+            { name: "Iphone 16 pro", img: "https://i5.walmartimages.com/seo/AT-T-iPhone-16-Pro-Max-512GB-Black-Titanium-Apple-Intelligence_dd05474c-fe54-4971-85f6-2713af29243a.d49c65d29ad3ae94fd4bfa4051055e62.jpeg", price: "$6000", review: "4.3" },
+            { name: "Iphone 16 pro", img: "https://static.iphoned.nl/orca/products/23029/apple-iphone-16-pro.png", price: "$6500", review: "4.5" },
+            { name: "Iphone 14 pro max", img: "https://media.extra.com/s/aurora/100322230_800/Apple-iPhone-14-Pro-Max%2C-5G%2C-128GB%2C-Space-Black?locale=en-GB,en-*,*", price: "$5000", review: "4.9" },
+            { name: "Iphone 17", img: "https://tse1.mm.bing.net/th/id/OIP.4BTtJpez3AvsIouvVXtSuwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3", price: "$4800", review: "4.3" },
+            { name: "Iphone 17 pro max", img: "https://www.mobiledokan.com/media/apple-iphone-17-pro-max-white-official-image_1.webp", price: "$4500", review: "4.9" },
+            { name: "Iphone 17", img: "https://cdn.mwave.com.au/images/400/apple_iphone_17_pro_max_256gb_cosmic_orange_ac89347_41674.jpg", price: "$4200", review: "4.8" }
+        ];
+
+        let cart = document.getElementById("cart");
+
+        iphones.map((item) => {
+
+            let card = document.createElement("div");
+            card.className = "card";
+
+            let img = document.createElement("img");
+            img.src = item.img;
+
+            let name = document.createElement("h2");
+            name.innerText = item.name;
+
+            let price = document.createElement("p");
+            price.innerText = item.price;
+
+            let review = document.createElement("small");
+            review.innerText = `⭐⭐⭐⭐⭐ ${item.review}`;
+
+            let btn = document.createElement("button");
+            btn.innerText = "Add to Cart";
+
+            card.append(img, name, price, review, btn);
+            cart.appendChild(card);
+
+        });
+    </script>
+
+</body>
+
+</html>
